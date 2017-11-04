@@ -58,8 +58,10 @@ public class LocalChangelogActivity extends Activity {
             public void run() {
                 InputStreamReader inputReader = null;
                 StringBuilder data = new StringBuilder();
-                Pattern p2 = Pattern.compile("\\s+\\*\\s(([\\w_.-]+/)+)");
-                Pattern p3 = Pattern.compile("(\\d\\d-\\d\\d-\\d{4})");
+                Pattern date = Pattern.compile("(={20}|\\d{4}-\\d{2}-\\d{2})");
+                Pattern commit = Pattern.compile("([a-f0-9]{7})");
+                Pattern committer = Pattern.compile("\\[(\\D.*?)]");
+                Pattern title = Pattern.compile("(\\R\\s+[\\*]\\s.*)");
                 try {
                     char tmp[] = new char[2048];
                     int numRead;
@@ -82,16 +84,29 @@ public class LocalChangelogActivity extends Activity {
                 Resources.Theme theme = getTheme();
                 TypedValue typedValue = new TypedValue();
                 theme.resolveAttribute(android.R.attr.colorAccent, typedValue, true);
-
                 final int color = getColor(typedValue.resourceId);
-                Matcher m = p2.matcher(data);
+
+                Matcher m = date.matcher(data);
                 while (m.find()){
-                    sb.setSpan(new StyleSpan(Typeface.BOLD),m.start(0), m.end(0), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-                    sb.setSpan(new ForegroundColorSpan(color),m.start(0),m.end(0),Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                    sb.setSpan(new ForegroundColorSpan(color), m.start(1), m.end(1), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                    sb.setSpan(new StyleSpan(Typeface.BOLD), m.start(1), m.end(1), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
                 }
-                m = p3.matcher(data);
+
+                m = commit.matcher(data);
                 while (m.find()){
-                    sb.setSpan(new StyleSpan(Typeface.BOLD+ Typeface.ITALIC),m.start(1), m.end(1), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                    sb.setSpan(new StyleSpan(Typeface.NORMAL), m.start(1), m.end(1), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                }
+
+                m = committer.matcher(data);
+                while (m.find()){
+                    sb.setSpan(new ForegroundColorSpan(color), m.start(1), m.end(1), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                    sb.setSpan(new StyleSpan(Typeface.NORMAL), m.start(1), m.end(1), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                }
+
+                m = title.matcher(data);
+                while (m.find()){
+                    sb.setSpan(new ForegroundColorSpan(color), m.start(1), m.end(1), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                    sb.setSpan(new StyleSpan(Typeface.BOLD), m.start(1), m.end(1), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
                 }
 
                 final TextView textView = new TextView(LocalChangelogActivity.this);
