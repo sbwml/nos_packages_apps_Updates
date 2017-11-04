@@ -131,21 +131,36 @@ public class UpdatePreference extends Preference implements OnLongClickListener 
         });
         TextView mChangelogText = view.findViewById(R.id.changelog_text);
         if (isChangelogAvailable()) {
-            Pattern p2 = Pattern.compile("\\s+\\*\\s(([\\w_.-]+/)+)");
-            Pattern p3 = Pattern.compile("(\\d\\d\\-\\d\\d\\-\\d{4})");
+            Pattern date = Pattern.compile("(={20}|\\d{4}-\\d{2}-\\d{2})");
+            Pattern commit = Pattern.compile("([a-f0-9]{7})");
+            Pattern committer = Pattern.compile("\\[(\\D.*?)]");
+            Pattern title = Pattern.compile("(\\R\\s+[\\*]\\s.*)");
             SpannableStringBuilder sb = new SpannableStringBuilder(mUpdateChangelog);
             Resources.Theme theme = mContext.getTheme();
             TypedValue typedValue = new TypedValue();
             theme.resolveAttribute(android.R.attr.colorAccent, typedValue, true);
             final int color = mContext.getColor(typedValue.resourceId);
-            Matcher m = p2.matcher(mUpdateChangelog);
+            Matcher m = date.matcher(mUpdateChangelog);
             while (m.find()){
-                sb.setSpan(new StyleSpan(Typeface.BOLD),m.start(0), m.end(0), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-                sb.setSpan(new ForegroundColorSpan(color),m.start(0),m.end(0),Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                sb.setSpan(new ForegroundColorSpan(color), m.start(1), m.end(1), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                sb.setSpan(new StyleSpan(Typeface.BOLD), m.start(1), m.end(1), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
             }
-            m = p3.matcher(mUpdateChangelog);
+
+            m = commit.matcher(mUpdateChangelog);
             while (m.find()){
-                sb.setSpan(new StyleSpan(Typeface.BOLD+ Typeface.ITALIC),m.start(1), m.end(1), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                sb.setSpan(new StyleSpan(Typeface.NORMAL), m.start(1), m.end(1), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+            }
+
+            m = committer.matcher(mUpdateChangelog);
+            while (m.find()){
+                sb.setSpan(new ForegroundColorSpan(color), m.start(1), m.end(1), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                sb.setSpan(new StyleSpan(Typeface.NORMAL), m.start(1), m.end(1), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+            }
+
+            m = title.matcher(mUpdateChangelog);
+            while (m.find()){
+                sb.setSpan(new ForegroundColorSpan(color), m.start(1), m.end(1), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                sb.setSpan(new StyleSpan(Typeface.BOLD), m.start(1), m.end(1), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
             }
             mChangelogText.setText(sb);
         }
