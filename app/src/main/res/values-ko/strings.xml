@@ -33,7 +33,7 @@
     <string name="donate_info_title">기부</string>
     <string name="donate_info_summary">개발 지원하기</string>
     <string name="website_info_title">웹사이트</string>
-    <string name="website_info_summary">우리의 웹사이트 방문</string>
+    <string name="website_info_summary">웹사이트 방문</string>
     <string name="news_info_title">뉴스</string>
     <string name="news_info_summary">업데이트 및 기타 뉴스에 대한 정보 확인</string>
     <string name="forum_info_title">포럼</string>
@@ -43,8 +43,7 @@
     <string name="addons_error">부가 기능 목록을 불러오지 못했습니다.</string>
     <!-- MD5 -->
     <string name="checking_md5">파일 무결성 확인 중…</string>
-    <string name="md5_failed_dialog_title">파일 무결성</string>
-    <string name="md5_failed_dialog_message">확인에 실패했습니다. 계속 하시겠습니까?</string>
+    <string name="md5_verification_failed">파일 무결성 검증 실패</string>
     <!-- Downloads -->
     <string name="confirm_download_cancel_dialog_title">다운로드 취소</string>
     <string name="confirm_download_cancel_dialog_message">현재 다운로드를 취소하시겠습니까?</string>

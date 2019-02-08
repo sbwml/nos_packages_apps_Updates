@@ -43,8 +43,7 @@
     <string name="addons_error">Fout bij het laden van de add-ons lijst</string>
     <!-- MD5 -->
     <string name="checking_md5">Verifieren van bestandsintegriteit…</string>
-    <string name="md5_failed_dialog_title">Bestandsintegriteit</string>
-    <string name="md5_failed_dialog_message">Verificatie mislukt, wilt u doorgaan?</string>
+    <string name="md5_verification_failed">Bestandsintegriteit verificatie mislukt</string>
     <!-- Downloads -->
     <string name="confirm_download_cancel_dialog_title">Download annuleren</string>
     <string name="confirm_download_cancel_dialog_message">Weet u zeker dat u de download wilt annuleren ?</string>

@@ -43,8 +43,7 @@
     <string name="addons_error">Памылка пры ладаванні спісу дадаткаў</string>
     <!-- MD5 -->
     <string name="checking_md5">Праверка цэласнасці файла…</string>
-    <string name="md5_failed_dialog_title">Цэласнасць файла</string>
-    <string name="md5_failed_dialog_message">Праверка не ўдалася. Жадаеце працягнуць?</string>
+    <string name="md5_verification_failed">Памылка праверкі цэласнасці файла</string>
     <!-- Downloads -->
     <string name="confirm_download_cancel_dialog_title">Скасаваць спампоўку</string>
     <string name="confirm_download_cancel_dialog_message">Скасаваць гэтую спампоўку?</string>

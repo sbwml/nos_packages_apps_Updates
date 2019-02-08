@@ -43,8 +43,7 @@
     <string name="addons_error">Fehler beim Laden der Add-on Liste</string>
     <!-- MD5 -->
     <string name="checking_md5">Integritätsprüfung…</string>
-    <string name="md5_failed_dialog_title">Dateiintegrität</string>
-    <string name="md5_failed_dialog_message">Die Überprüfung ist fehlgeschlagen, möchten sie fortfahren?</string>
+    <string name="md5_verification_failed">Die Überprüfung der Dateiintegrität ist fehlgeschlagen</string>
     <!-- Downloads -->
     <string name="confirm_download_cancel_dialog_title">Download abbrechen</string>
     <string name="confirm_download_cancel_dialog_message">Soll der aktuelle Download abgebrochen werden ?</string>

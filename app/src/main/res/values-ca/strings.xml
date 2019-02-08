@@ -43,8 +43,7 @@
     <string name="addons_error">No s\'ha pogut desar la llista de complements</string>
     <!-- MD5 -->
     <string name="checking_md5">Verificant la integritat de l\'arxiu…</string>
-    <string name="md5_failed_dialog_title">Integritat de l\'arxiu</string>
-    <string name="md5_failed_dialog_message">Verificació fallida, vol continuar?</string>
+    <string name="md5_verification_failed">La verificació de la integritat del fitxer ha fallat</string>
     <!-- Downloads -->
     <string name="confirm_download_cancel_dialog_title">Cancel·lar la baixada</string>
     <string name="confirm_download_cancel_dialog_message">Voleu cancel·lar la baixada actual?</string>
@@ -87,6 +86,7 @@
     <string name="wipe_data">Esborrar data</string>
     <string name="wipe_data_dialog_confirmation_title">Restabliment de fàbrica</string>
     <string name="wipe_data_dialog_confirmation_message">Heu seleccionat l\'opció \'Eliminar dades\', això farà un restabliment de fàbrica al vostre dispositiu, voleu continuar?</string>
+    <string name="update_manual_ab">Per a continuar, instal·la la compilació manualment utilitzant TWRP. Aquest dispositiu no suporta la instal·lació automàtica degut a les particions A/B.</string>
     <!-- Changelog -->
     <string name="changelog_title">Registre de canvis</string>
     <string name="changelog_loading">Carregant…</string>
